@@ -1,0 +1,8 @@
+<div>
+	<h3>Room - {{ room }}</h3>
+
+	<button type="butoon" (click)="leaveRoom()" >Leave</button>
+	<button type="butoon" (click)="sendTransaction()" >Send transaction</button>
+
+	<p *ngIf="data" >{{data.message}}</p>
+</div>

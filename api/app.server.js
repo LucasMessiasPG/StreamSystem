@@ -34,17 +34,24 @@ let
     	// socket
     	io.on('connection', function(socket) {
 
-	        socket.on('subscribe', (hash) => {
-	            socket.join(hash);
+
+	        socket.on('subscribe', (room) => {
+	        	console.log("subscribe",room);
+	            socket.join(room);
 	        });
 
-	        socket.on('unsubscribe', (hash) => {
-	            socket.leave(hash);
-	            socket.disconnect();
+	        socket.on('unsubscribe', (room) => {
+	        	console.log("unsubscribe",room);
+	            socket.leave(room);
+	            // socket.disconnect();
 	        });
 
-	        socket.on('transactions', function(data) {
-	            socket.broadcast.to(data.hash).emit('transactions', data);
+	        socket.on('message', function(data) {
+	        	let
+	        		room = data.room;
+	        	delete data.room;
+
+	            io.to(room).emit('data', data);
 	        });
 
 	    });

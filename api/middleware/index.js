@@ -12,6 +12,10 @@ class Routes{
 	}
 
 	init(){
+
+		this.router
+			.use(this.enableCors);
+
 		this.router
 			.use(this.decodeToken);
 
@@ -32,9 +36,25 @@ class Routes{
 
 				next();
 			});
+		}else{
+			req.user = {
+				public: true
+			};
+			next();
 		}
 
 	}
+
+	enableCors(req, res, next){
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS, DELETE');
+        res.header('Allow', 'GET, POST, PATCH, OPTIONS, DELETE');
+        res.header('Access-Control-Allow-Credentials', 'true');
+		res.header('Access-Control-Allow-Headers', 'X-api-key, content-type');
+
+        next();
+	}
+
 }
 
 module.exports = Routes;

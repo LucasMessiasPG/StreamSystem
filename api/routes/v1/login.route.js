@@ -25,6 +25,8 @@ class Routes{
 
 	async post(req, res, next){
 
+		console.log(req.body);
+
 		let
 			User = Models.User,
 			email = req.body.email,
@@ -33,6 +35,8 @@ class Routes{
 		let
 			dataToken = {},
 			user = await User.findOne({email: new RegExp('^' + email + '$', 'i')});
+
+		if(!user) return res.status(404).json({ success: false, message: "user not found" })
 
 		dataToken.email = user.email;
 		dataToken.name = user.name;

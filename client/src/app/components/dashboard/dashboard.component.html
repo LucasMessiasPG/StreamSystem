@@ -1,0 +1,19 @@
+<topbar-ss></topbar-ss>
+<div class="container">
+	
+	<div>
+		<h1>dashboard</h1>
+
+		<p>room: {{ room }}</p>
+		<div *ngIf="user && !room">
+			<p>Nome: {{ user.name }}</p>
+			<button (click)="create()" >Create a new dashboard</button>
+		</div>
+		<div *ngIf="user && room">
+			<room-ss [room]="room" (leave)="disconect()"></room-ss>
+		</div>
+	</div>
+
+
+</div>
+

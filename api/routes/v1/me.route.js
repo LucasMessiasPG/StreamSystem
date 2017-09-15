@@ -18,7 +18,7 @@ class Routes{
 	}
 
 	get(req, res, next){
-		if(!req.user){
+		if(!req.user || req.user && req.user.public){
 			return res.status(400).json({ success: false, message: "token not found" });
 		}
 		return res.json({ success: true, message: "token decoded", item: req.user });
