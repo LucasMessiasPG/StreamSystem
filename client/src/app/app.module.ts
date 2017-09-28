@@ -30,7 +30,7 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 
 
-const config: SocketIoConfig = { url: environment.api , options: { path: "/socket"} };
+const config: SocketIoConfig = { url: environment.api , options: { path: (environment.production ? "/api" : "" ) + "/socket"} };
 
 
 const appRoutes: Routes = [
