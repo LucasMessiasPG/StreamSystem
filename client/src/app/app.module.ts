@@ -33,6 +33,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8081', options: { path: 
 
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'card/:room', component: CardComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'scoreboard/:room', component: ScoreboardComponent },
