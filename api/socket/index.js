@@ -10,8 +10,6 @@ class Socket{
 	init(){
 		this.io.on('connection',(socket) => {
 
-			console.log(socket);
-
 			this.subscribe(socket);
 			this.unsubscribe(socket);
 	       	this.message(socket);
