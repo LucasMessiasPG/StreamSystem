@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule }   from '@angular/common/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router';
+import { environment } from '../environments/environment';
 
 // Components
 import { AppComponent } from './app.component';
@@ -29,7 +30,7 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 
 
-const config: SocketIoConfig = { url: 'http://localhost:8081', options: { path: "/socket"} };
+const config: SocketIoConfig = { url: environment.api , options: { path: "/socket"} };
 
 
 const appRoutes: Routes = [
