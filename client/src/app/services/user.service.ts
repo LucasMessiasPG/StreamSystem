@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
+
 import 'rxjs/Rx'
 
 
@@ -48,7 +50,7 @@ export class UserService {
 		if(this.user){
 			user = await Observable.of(this.user).toPromise();
 		}else{
-			user = await this.http.get<loginResponse>("http://localhost:8081/v1/me")
+			user = await this.http.get<loginResponse>(environment.api+"/v1/me")
 			.toPromise()
 			.then(response => {
 				this.user = response.item;
@@ -73,7 +75,7 @@ export class UserService {
 		let	
 			body = { email: email, password: password };
 
-		return await this.http.post<loginResponse>("http://localhost:8081/v1/login",body)
+		return await this.http.post<loginResponse>(environment.api+"/v1/login",body)
 			.toPromise()
 			.then(result => {
 				if(result.success){

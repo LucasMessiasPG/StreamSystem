@@ -1,0 +1,7 @@
+.list-inline .pokeball{
+	width: 30px;
+	cursor: pointer;
+}.list-inline .pokeball:not(.selected){
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}

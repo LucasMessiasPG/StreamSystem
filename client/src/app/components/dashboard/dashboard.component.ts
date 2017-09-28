@@ -31,12 +31,12 @@ export class DashboardComponent implements OnInit {
 	}
 
 	enter(room){
-		this.socketService.enterRoom(room);
+		this.socketService.enterRoom(room,"dashboard");
 		localStorage.setItem("room",room);
 	}
 
 	disconect(){
-		this.socketService.leaveRoom(this.room);
+		this.socketService.leaveRoom(this.room, "dashboard");
 		localStorage.removeItem("room");
 		delete this.room;
 	}

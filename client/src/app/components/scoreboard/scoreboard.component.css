@@ -1,0 +1,23 @@
+*{
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	/*font-size: 30px;*/
+	background-color: #00d200;
+}
+body{
+	height: 100%;
+}
+.list-inline .pokeball{
+	width: 20px;
+	cursor: pointer;
+}.list-inline .pokeball:not(.selected){
+	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.deck{
+	font-size: 22px;
+}
+
+.surname{
+	font-size: 22px;
+}

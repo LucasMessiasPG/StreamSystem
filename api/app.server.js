@@ -18,6 +18,8 @@ process.on('unhandledRejection', (err, p) => {
 let
 	Routes = require('./routes'),
 	Middleware = require("./middleware"),
+	Socket = require("./socket"),
+	socket = new Socket(io);
 	configExpress = () => {
 
 		// basic config
@@ -32,30 +34,7 @@ let
     	app.use(new Routes(express).init());
 
     	// socket
-    	io.on('connection', function(socket) {
-
-
-	        socket.on('subscribe', (room) => {
-	        	console.log("subscribe",room);
-	            socket.join(room);
-	        });
-
-	        socket.on('unsubscribe', (room) => {
-	        	console.log("unsubscribe",room);
-	            socket.leave(room);
-	            // socket.disconnect();
-	        });
-
-	        socket.on('message', function(data) {
-	        	let
-	        		room = data.room;
-	        	delete data.room;
-
-	            io.to(room).emit('data', data);
-	        });
-
-	    });
-
+    	socket.init();
 
 	    return http;
 	};

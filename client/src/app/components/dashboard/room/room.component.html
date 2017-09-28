@@ -1,8 +1,214 @@
 <div>
-	<h3>Room - {{ room }}</h3>
+	<h4>Room - {{ room }}</h4>
+	
+	<div class="row">
+		<div class="col-10">
+			<a class="btn btn-outline-success" href="/scoreboard/{{ room }}" target="_blank">Open scoreboard</a>
+			<a class="btn btn-outline-success" href="/card/{{ room }}" target="_blank">Open Img Link</a>
+			<button class="btn btn-outline-info" type="button" (click)="showPreveiew = !showPreveiew">Show Preview</button>
+		</div>
+		<div class="col text-right">
+			<button class="btn btn-outline-danger" type="butoon" (click)="leaveRoom()" >Leave</button>
+		</div>
+	</div>
 
-	<button type="butoon" (click)="leaveRoom()" >Leave</button>
-	<button type="butoon" (click)="sendTransaction()" >Send transaction</button>
 
-	<p *ngIf="data" >{{data.message}}</p>
+	<br/>
+
+
+	<div *ngIf="showPreveiew" style="border: 1px solid; margin-top: 20px; padding: 10px">
+		<scoreboard-ss [priview]="true" [room]="room"></scoreboard-ss>
+	</div>
+
+	<br/>
+
+	<hr>
+
+	<div class="row">
+		<div class="col-12">
+			<h3>Timer</h3>
+		</div>
+		<div class="col">
+			{{ makeTime(cooldown) }}
+		</div>
+		<div class="col">
+			<button [disabled]="status_cooldown == false" type="button" (click)="startTime()" class="btn btn-block btn-success">Start</button>
+		</div>
+		<div class="col">
+			<button type="button" (click)="resetTime()" class="btn btn-block btn-warning">Reset</button>
+		</div>
+		<div class="col">
+			<button [disabled]="status_cooldown == true" type="button" (click)="stopTime()" class="btn btn-block btn-danger">Stop</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<form (ngSubmit)="onSubmit(dashboard)">
+		<div class="row">
+			<div class="col-12">
+				<div class="form-group">
+					<label for="card-name">Decription</label>
+					<input type="text" class="form-control" name="name" [(ngModel)]="dashboard.player1.decription">
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="col-12 col-sm-6">
+				<fieldset>
+					<legend>
+						<span>Player 1</span>
+						<ul class="list-inline">
+							<li class="list-inline-item"><img (click)="setPokeball(1,1)" class="pokeball" [ngClass]="{'selected': dashboard.prize1 >= 1}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(2,1)" class="pokeball" [ngClass]="{'selected': dashboard.prize1 >= 2}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(3,1)" class="pokeball" [ngClass]="{'selected': dashboard.prize1 >= 3}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(4,1)" class="pokeball" [ngClass]="{'selected': dashboard.prize1 >= 4}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(5,1)" class="pokeball" [ngClass]="{'selected': dashboard.prize1 >= 5}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(6,1)" class="pokeball" [ngClass]="{'selected': dashboard.prize1 == 6}" src="/assets/img/pokeball.png" alt=""></li>
+						</ul>
+					</legend>
+					<div class="form-group">
+						<label for="namePlayer1">Name</label>
+						<input [(ngModel)]="dashboard.player1.name" type="text" class="form-control" id="DashboardPlayer1name" name="DashboardPlayer1name" placeholder="Enter name">
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="surnamePlayer1">Surname</label>
+								<input [(ngModel)]="dashboard.player1.surname" type="text" class="form-control" id="DashboardPlayer1surname" name="DashboardPlayer1surname" placeholder="Enter surname">
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="form-group">
+								<label for="scorePlayer1">Score</label>
+								<div class="row">
+									<div class="col">
+										<button (click)="changeScore(1,-1)" type="button" class="btn btn-warning btn-block">-1</button>
+									</div>
+									<div class="col">
+										<button (click)="changeScore(1,1)" type="button" class="btn btn-success btn-block">+1</button>
+									</div>
+								</div>
+								<!-- <input [(ngModel)]="dashboard.player1.score" type="text" class="form-control" id="DashboardPlayer1score" name="DashboardPlayer1score" placeholder="Enter score"> -->
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="deckPlayer1">Deck</label>
+								<input [(ngModel)]="dashboard.player1.deck" type="text" class="form-control" id="DashboardPlayer1deck" name="DashboardPlayer1deck" placeholder="Enter deck">
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="form-group">
+								<label for="historyPlayer1">History</label>
+								<input [(ngModel)]="dashboard.player1.history" type="text" class="form-control" id="DashboardPlayer1history" name="DashboardPlayer1history" placeholder="Enter history">
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="col-12 col-sm-6">
+				<fieldset>
+					<legend>Player 2
+						<span>Player 2</span>
+						<ul class="list-inline">
+							<li class="list-inline-item"><img (click)="setPokeball(6,2)" class="pokeball" [ngClass]="{'selected': dashboard.prize2 == 6}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(5,2)" class="pokeball" [ngClass]="{'selected': dashboard.prize2 >= 5}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(4,2)" class="pokeball" [ngClass]="{'selected': dashboard.prize2 >= 4}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(3,2)" class="pokeball" [ngClass]="{'selected': dashboard.prize2 >= 3}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(2,2)" class="pokeball" [ngClass]="{'selected': dashboard.prize2 >= 2}" src="/assets/img/pokeball.png" alt=""></li>
+							<li class="list-inline-item"><img (click)="setPokeball(1,2)" class="pokeball" [ngClass]="{'selected': dashboard.prize2 >= 1}" src="/assets/img/pokeball.png" alt=""></li>
+						</ul>
+					</legend>
+					<div class="form-group">
+						<label for="namePlayer1">Name</label>
+						<input [(ngModel)]="dashboard.player2.name" type="text" class="form-control" id="DashboardPlayer2name" name="DashboardPlayer2name" placeholder="Enter name">
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="surnameplayer2">Surname</label>
+								<input [(ngModel)]="dashboard.player2.surname" type="text" class="form-control" id="DashboardPlayer2surname" name="DashboardPlayer2surname" placeholder="Enter surname">
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="form-group">
+								<label for="scoreplayer2">Score</label>
+								<div class="row">
+									<div class="col">
+										<button (click)="changeScore(2,-1)" type="button" class="btn btn-warning btn-block">-1</button>
+									</div>
+									<div class="col">
+										<button (click)="changeScore(2,1)" type="button" class="btn btn-success btn-block">+1</button>
+									</div>
+								</div>
+								<!-- <input [(ngModel)]="dashboard.player2.score" type="text" class="form-control" id="DashboardPlayer2score" name="DashboardPlayer2score" placeholder="Enter score"> -->
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="deckplayer2">Deck</label>
+								<input [(ngModel)]="dashboard.player2.deck" type="text" class="form-control" id="DashboardPlayer2deck" name="DashboardPlayer2deck" placeholder="Enter deck">
+							</div>
+						</div>
+						<div class="col-12 col-lg-4">
+							<div class="form-group">
+								<label for="historyplayer2">History</label>
+								<input [(ngModel)]="dashboard.player2.history" type="text" class="form-control" id="DashboardPlayer2history" name="DashboardPlayer2history" placeholder="Enter history">
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="col-12 text-center">
+				<button type="submit" class="btn btn-outline-success">Send</button>	
+			</div>
+
+		</div>
+
+	</form>
+
+	<form (ngSubmit)="search(card_name)" style="margin-top: 20px;">
+		<div class="row">
+			<div class="col-4">
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<label for="card-name">Card Name</label>
+							<input type="text" class="form-control" name="name" [(ngModel)]="card_name">
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">Search</button>
+							<button type="button" (click)="hideImg()" class="btn btn-info">Esconder</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-8" *ngIf="img">
+				<img style="width: 60px;" [src]="img.img">
+			</div>
+		</div>
+	</form>
+
+	<div class="row">
+		<div class="col-3" *ngFor="let card of cards">
+			<div class="row">
+				<div class="col-4">
+					<img style="width: 80px" [src]="card.imageUrl">
+				</div>
+				<div class="col-8">
+					<p>{{ card.name }}</p>
+					<div class="col"><button (click)="showImg(card,20)" class="btn btn-block btn-primary">20s</button></div>
+					<div class="col"><button (click)="showImg(card,-1)" class="btn btn-block btn-success">Mostra</button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
