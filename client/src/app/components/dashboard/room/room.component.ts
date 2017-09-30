@@ -21,7 +21,7 @@ export class RoomComponent implements OnInit {
 	img;
 	cards;
 	cooldown = 0;
-	status_cooldown = false;
+	status_cooldown = true;
 	player1 = {
 		decription: "",
 		history: "",
