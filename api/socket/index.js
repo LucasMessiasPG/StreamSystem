@@ -8,7 +8,7 @@ class Socket{
 	}
 
 	init(){
-		this.io.on('connection',(socket) => {
+		this.io.of('/api').on('connection',(socket) => {
 
 			this.subscribe(socket);
 			this.unsubscribe(socket);
@@ -17,6 +17,7 @@ class Socket{
 	}
 
 	subscribe(socket){
+
 		socket.on('subscribe', (data) => {
         	// console.log("subscribe",room);
             // socket.join(room);
