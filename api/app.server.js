@@ -19,7 +19,7 @@ let
 	Routes = require('./routes'),
 	Middleware = require("./middleware"),
 	Socket = require("./socket"),
-	socket = new Socket(io),
+	socket = new Socket(io.of('/api')),
 	configExpress = () => {
 
 		// basic config

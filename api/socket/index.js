@@ -8,7 +8,7 @@ class Socket{
 	}
 
 	init(){
-		this.io.of('/api').on('connection',(socket) => {
+		this.io.on('connection',(socket) => {
 
 			this.subscribe(socket);
 			this.unsubscribe(socket);
