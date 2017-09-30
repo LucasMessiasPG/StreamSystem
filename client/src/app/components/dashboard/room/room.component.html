@@ -1,23 +1,29 @@
 <div>
-	<h4>Room - {{ room }}</h4>
+	<h4 style="word-wrap: break-word;">Room - {{ room }}</h4>
 	
 	<div class="row">
-		<div class="col-10">
-			<a class="btn btn-outline-success" href="/scoreboard/{{ room }}" target="_blank">Open scoreboard</a>
-			<a class="btn btn-outline-success" href="/card/{{ room }}" target="_blank">Open Img Link</a>
-			<button class="btn btn-outline-info" type="button" (click)="showPreveiew = !showPreveiew">Show Preview</button>
+		<div class="col-12 col-lg-2 col-md-3">
+			<a class="btn btn-block btn-outline-success" href="/scoreboard/{{ room }}" target="_blank">Open scoreboard</a>
 		</div>
-		<div class="col text-right">
-			<button class="btn btn-outline-danger" type="butoon" (click)="leaveRoom()" >Leave</button>
+		<div class="col-12 col-lg-2 col-md-3">
+			<a class="btn btn-block btn-outline-success" href="/card/{{ room }}" target="_blank">Open Img Link</a>
+		</div>
+		<div class="col-12 col-lg-2 col-md-3 preview">
+			<button class="btn btn-block btn-outline-info" type="button" (click)="showPreveiew = !showPreveiew">Show Preview</button>
+		</div>
+		<div class="col-12 ml-auto col-lg-2 col-md-3">
+			<button class="btn btn-block btn-outline-danger" type="butoon" (click)="leaveRoom()" >Leave</button>
 		</div>
 	</div>
 
 
 	<br/>
 
-
-	<div *ngIf="showPreveiew" style="border: 1px solid; margin-top: 20px; padding: 10px">
-		<scoreboard-ss [priview]="true" [room]="room"></scoreboard-ss>
+	<div *ngIf="showPreveiew">
+		<p align="center">
+			<iframe id="frame" src="http://localhost:4200/scoreboard/897812b8a247c3f9635dc108f04172501f4e064b903754576289735fc83d63e4" frameborder="0"></iframe>
+		</p>
+		<!-- <scoreboard-ss [priview]="true" [room]="room"></scoreboard-ss> -->
 	</div>
 
 	<br/>
@@ -28,7 +34,7 @@
 		<div class="col-12">
 			<h3>Timer</h3>
 		</div>
-		<div class="col">
+		<div class="col-12 text-center">
 			{{ makeTime(cooldown) }}
 		</div>
 		<div class="col">
@@ -172,9 +178,9 @@
 
 	</form>
 
-	<form (ngSubmit)="search(card_name)" style="margin-top: 20px;">
+	<form (ngSubmit)="search(card_name)" autocomplete="off" style="margin-top: 20px;">
 		<div class="row">
-			<div class="col-4">
+			<div class="col-8 col-md-4">
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
@@ -185,19 +191,19 @@
 					<div class="col-12">
 						<div class="form-group">
 							<button type="submit" class="btn btn-success">Search</button>
-							<button type="button" (click)="hideImg()" class="btn btn-info">Esconder</button>
+							<button type="button" (click)="hideImg()" class="btn btn-info">Hide</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-8" *ngIf="img">
+			<div class="col-4 col-md-8 text-md-left text-center" *ngIf="img">
 				<img style="width: 60px;" [src]="img.img">
 			</div>
 		</div>
 	</form>
 
 	<div class="row">
-		<div class="col-3" *ngFor="let card of cards">
+		<div class="col-12" *ngFor="let card of cards">
 			<div class="row">
 				<div class="col-4">
 					<img style="width: 80px" [src]="card.imageUrl">

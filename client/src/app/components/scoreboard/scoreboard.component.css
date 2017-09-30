@@ -7,7 +7,7 @@ body{
 	height: 100%;
 }
 .list-inline .pokeball{
-	width: 20px;
+	width: 25px;
 	cursor: pointer;
 }.list-inline .pokeball:not(.selected){
 	-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
@@ -15,9 +15,10 @@ body{
 }
 
 .deck{
-	font-size: 22px;
+	font-size: 20px;
 }
 
 .surname{
-	font-size: 22px;
+	font-size: 18px;
+	line-height: 12px;
 }

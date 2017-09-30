@@ -8,12 +8,12 @@
 					<div class="col-12">{{ data.player1.name || "Name" }}</div>
 				</div>
 				<div class="row">
-					<div class="col-12" [ngStyle]="{'font-size.px': fontSamllSize}">{{ data.player1.surname }}</div>
+					<div class="col-12 surname">{{ data.player1.surname }}</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col" [ngStyle]="{'font-size.px': fontSamllSize}">{{ data.player1.deck || "Deck" }}</div>
+			<div class="col deck">{{ data.player1.deck || "Deck" }}</div>
 			<div class="col">
 				<ul class="list-inline">
 					<li class="list-inline-item"><img class="pokeball" [ngClass]="{'selected': data.prize1 >= 1}" src="/assets/img/pokeball.png" alt=""></li>
@@ -44,7 +44,7 @@
 					<div class="col-12">{{ data.player2.name || "Name" }}</div>
 				</div>
 				<div class="row">
-					<div class="col-12" [ngStyle]="{'font-size.px': fontSamllSize}">{{ data.player2.surname }}</div>
+					<div class="col-12 surname">{{ data.player2.surname }}</div>
 				</div>
 			</div>
 			<div class="col-4">{{ data.player2.history || "0-0-0" }}</div>
@@ -60,7 +60,7 @@
 					<li class="list-inline-item"><img class="pokeball" [ngClass]="{'selected': data.prize2 >= 1}" src="/assets/img/pokeball.png" alt=""></li>
 				</ul>
 			</div>
-			<div class="col" [ngStyle]="{'font-size.px': fontSamllSize}">{{ data.player2.deck || "Deck" }}</div>
+			<div class="col deck">{{ data.player2.deck || "Deck" }}</div>
 		</div>	
 	</div>
 </div>

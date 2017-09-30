@@ -46,6 +46,7 @@ export class RoomComponent implements OnInit {
 		player1: this.player1,
 		player2: this.player2
 	};
+	url;
 
 	constructor(
 		private socketService: SocketService,
@@ -54,6 +55,7 @@ export class RoomComponent implements OnInit {
 
 
 	ngOnInit(){
+		this.url = "http://localhost:4200/scoreboard/"+this.room;
 		this.socketService.getMesssage("data")
 			.subscribe(data => {
 				if(!data.preview){
