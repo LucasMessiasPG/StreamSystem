@@ -31,9 +31,9 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 
 const config: SocketIoConfig = { 
-    url: environment.api, 
+    url: environment.domain, 
     options: { 
-        path: "/socket"
+        path: "/api/socket"
     } 
 };
 
