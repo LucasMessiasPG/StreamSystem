@@ -14,6 +14,7 @@ import { CardComponent } from './components/card/card.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { RoomComponent } from './components/dashboard/room/room.component';
 import { HomeComponent } from './components/home/home.component';
+import { SafePipe } from './pipe/safe.pipe';
 
 
 // Services
@@ -33,7 +34,7 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 const config: SocketIoConfig = { 
     url: environment.domain, 
     options: { 
-        path: "/api/socket"
+        path: ( environment.production === true ? "/api" : "" ) + "/socket"
     } 
 };
 
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     CardComponent,
     ScoreboardComponent,
-    RoomComponent
+    RoomComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

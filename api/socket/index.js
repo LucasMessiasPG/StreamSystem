@@ -5,6 +5,7 @@ class Socket{
 	constructor(io){
 		this.io = io;
 		this.rooms = [];
+		this.intervals = {};
 	}
 
 	init(){
@@ -157,22 +158,23 @@ class Socket{
         	let
         		room = data.room;
 
-        	if(this.rooms[data.room].img){
-        		if(this.rooms[data.room].img.interval){
-        			clearInterval(this.rooms[data.room].img.interval);
-        		}
-        	}
+
+    		if(this.intervals[data.room]){
+    			clearInterval(this.intervals[data.room]);
+    		}
 
         	this.rooms[data.room].img = data;
 
-
         	if(data.cooldown > 0){
-        		this.rooms[data.room].img.interval = setTimeout(() => {
-        			this.rooms[data.room].img = "";
+
+        		let interval = setTimeout(() => {
+        			this.rooms[data.room].img.img = "";
         			data.img = "";
         			data.cooldown = -1;
         			this.io.to(room).emit('data-img', data);
-        		},data.cooldown * 1000);
+        		},(data.cooldown * 1000));
+
+        		this.intervals[data.room] = interval;
         	}
 
             this.io.to(room).emit('data-img', data);

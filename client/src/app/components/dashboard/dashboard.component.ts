@@ -26,11 +26,13 @@ export class DashboardComponent implements OnInit {
 	}
 
 	create(){
-		this.room = SHA256(new Date().getTime()+"").toString();
-		this.enter(this.room);
+		let
+			room = SHA256(new Date().getTime()+"").toString();
+		this.enter(room);
 	}
 
 	enter(room){
+		this.room = room
 		this.socketService.enterRoom(room,"dashboard");
 		localStorage.setItem("room",room);
 	}

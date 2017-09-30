@@ -1,6 +1,6 @@
 <div>
 	<h4 style="word-wrap: break-word;">Room - {{ room }}</h4>
-	
+
 	<div class="row">
 		<div class="col-12 col-lg-2 col-md-3">
 			<a class="btn btn-block btn-outline-success" href="/scoreboard/{{ room }}" target="_blank">Open scoreboard</a>
@@ -21,7 +21,7 @@
 
 	<div *ngIf="showPreveiew">
 		<p align="center">
-			<iframe id="frame" src="http://localhost:4200/scoreboard/897812b8a247c3f9635dc108f04172501f4e064b903754576289735fc83d63e4" frameborder="0"></iframe>
+			<iframe id="frame" [src]="url | safe" frameborder="0"></iframe>
 		</p>
 		<!-- <scoreboard-ss [priview]="true" [room]="room"></scoreboard-ss> -->
 	</div>
@@ -203,13 +203,13 @@
 	</form>
 
 	<div class="row">
-		<div class="col-12" *ngFor="let card of cards">
+		<div class="col-12 col-md-4 col-lg-3" style="margin-top: 5px; margin-bottom: 5px;" *ngFor="let card of cards">
 			<div class="row">
 				<div class="col-4">
 					<img style="width: 80px" [src]="card.imageUrl">
 				</div>
 				<div class="col-8">
-					<p>{{ card.name }}</p>
+					<p style="text-align: center; margin-bottom: 2px;">{{ card.name }}</p>
 					<div class="col"><button (click)="showImg(card,20)" class="btn btn-block btn-primary">20s</button></div>
 					<div class="col"><button (click)="showImg(card,-1)" class="btn btn-block btn-success">Mostra</button></div>
 				</div>

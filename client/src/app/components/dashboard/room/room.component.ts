@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 
 import { SocketService } from '../../../services/socket.service';
@@ -55,7 +56,7 @@ export class RoomComponent implements OnInit {
 
 
 	ngOnInit(){
-		this.url = "http://localhost:4200/scoreboard/"+this.room;
+		this.url = environment.web_link + "/scoreboard/" + this.room;
 		this.socketService.getMesssage("data")
 			.subscribe(data => {
 				if(!data.preview){

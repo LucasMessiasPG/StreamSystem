@@ -5,8 +5,20 @@
 		<h1>dashboard</h1>
 
 		<div *ngIf="user && !room">
-			<p>Nome: {{ user.name }}</p>
-			<button class="btn btn-primary" (click)="create()" >Create a new dashboard</button>
+			<p>Hello {{ user.name }}</p>
+	
+			<div class="row">
+				<div class="col-12">
+					<div class="form-group">
+						<label for="room">Dashboard code</label>
+						<input type="text" [(ngModel)]="_room" name="room" class="form-control">
+					</div>
+				</div>
+				<div class="col-12">
+					<button type="button" class="btn btn-primary" (click)="enter(_room)">Enter Dashboard</button>
+					<button class="btn btn-success" (click)="create()" >Create a new dashboard</button>
+				</div>
+			</div>
 		</div>
 		<div *ngIf="user && room">
 			<room-ss [room]="room" (leave)="disconect()"></room-ss>
