@@ -48,6 +48,7 @@ export class RoomComponent implements OnInit {
 		player2: this.player2
 	};
 	url;
+	link_card;
 
 	constructor(
 		private socketService: SocketService,
