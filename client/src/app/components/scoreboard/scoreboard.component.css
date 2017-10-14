@@ -2,6 +2,8 @@
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 	/*font-size: 30px;*/
 	/*background-color: #00d200;*/
+	color: white;
+	text-shadow: 1px 1px 5px black;
 }
 body{
 	height: 100%;
@@ -15,7 +17,7 @@ body{
 }
 
 .deck{
-	font-size: 20px;
+	font-size: 24px;
 }
 
 .surname{
