@@ -180,7 +180,14 @@
 
 	<form (ngSubmit)="search(card_name)" autocomplete="off" style="margin-top: 20px;">
 		<div class="row">
-			<div class="col-8 col-md-4">
+	
+
+			<div class="col-12 col-md-2 text-center" *ngIf="img">
+				<img style="width: 60px;" [src]="img.img">
+			</div>
+
+
+			<div class="col-12 col-md-5">
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group">
@@ -192,29 +199,70 @@
 						<div class="form-group">
 							<button type="submit" class="btn btn-success">Search</button>
 							<button type="button" (click)="hideImg()" class="btn btn-info">Hide</button>
+							<button type="button" (click)="show_preloaded = !show_preloaded" class="btn btn-info">Pre loaded</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-4 col-md-8 text-md-left text-center" *ngIf="img">
-				<img style="width: 60px;" [src]="img.img">
+
+	
+			<div class="col-12 col-md-5">
+
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<label for="">Link Img</label>
+							<input type="text" class="form-control" name="list_card" [(ngModel)]="link_card">
+						</div>
+					</div>
+					<div class="col-12">
+						<button type="button" class="btn btn-success" (click)="showImg({ imageUrl: link_card },-1)">Show</button>
+							<button type="button" (click)="logo_show_preloaded = !logo_show_preloaded" class="btn btn-info">Pre loaded</button>
+					</div>
+				</div>
+				
+			</div>
+
+
+
+			<div *ngIf="logo_show_preloaded" class="col-12">
+		
+				<div class="row">
+					<div class="col-3" *ngFor="let logo of link_logo_pre_loaded">
+						<div class="row">
+
+							<div class="col-2">
+								<img style="width: 40px" [src]="logo.imageUrl">
+							</div>
+							<div class="col-10">
+								<div class="col"><button (click)="showImg(logo,-1)" class="btn btn-block btn-success">Mostra</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<div *ngIf="show_preloaded" class="col-12">
+							
+				<div class="row">
+					<div class="col-3" *ngFor="let pre of link_card_pre_loaded">
+						<div class="row">
+
+							<div class="col-2">
+								<img style="width: 40px" [src]="pre.imageUrl">
+							</div>
+							<div class="col-10">
+								<p style="text-align: center; margin-bottom: 2px;">{{ pre.name }}</p>
+								<div class="col"><button (click)="showImg(pre,-1)" class="btn btn-block btn-success">Mostra</button></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</form>
-
-	<div class="row">
-		<div class="col-12 col-md-4">
-			<div class="form-group">
-				<label for="">Link Img {{ link_card }}</label>
-				<input type="text" class="form-control" [(ngModel)]="link_card">
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-12">
-			<button type="button" class="btn btn-success" (click)="showImg({ imageUrl: link_card },-1)">Show</button>
-		</div>
-	</div>
 
 	<div class="row">
 		<div class="col-12 col-md-4 col-lg-3" style="margin-top: 5px; margin-bottom: 5px;" *ngFor="let card of cards">

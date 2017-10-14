@@ -49,6 +49,8 @@ export class RoomComponent implements OnInit {
 	};
 	url;
 	link_card;
+	link_card_pre_loaded;
+	link_logo_pre_loaded;
 
 	constructor(
 		private socketService: SocketService,
@@ -57,6 +59,62 @@ export class RoomComponent implements OnInit {
 
 
 	ngOnInit(){
+
+		this.link_card_pre_loaded = [
+			{
+				imageUrl: "https://images.pokemontcg.io/xy10/105.png",
+				name: "N"
+			},
+			{
+				imageUrl: "https://images.pokemontcg.io/xy9/107.png",
+				name: "Sycamore"
+			},
+			{
+				imageUrl: "https://images.pokemontcg.io/sm3/116.png",
+				name: "Kiawe"
+			},
+			{
+				imageUrl: "https://images.pokemontcg.io/xy8/134.png",
+				name: "Brigette"
+			},
+			{
+				imageUrl: "https://images.pokemontcg.io/xy10/113.png",
+				name: "Ultra Ball"
+			},
+			{
+				imageUrl: "https://images.pokemontcg.io/sm1/122.png",
+				name: "Lillie"
+			},
+			{
+				"name":"Hala",
+				"imageUrl":"https://images.pokemontcg.io/sm2/126.png"
+			},
+			{
+				"name":"Professor Kukui",
+				"imageUrl":"https://images.pokemontcg.io/sm1/128.png"
+			},
+			{
+				"name":"Shauna",
+				"imageUrl":"https://images.pokemontcg.io/xy4/104.png"
+			},
+			{
+				"name":"Acerola",
+				"imageUrl":"https://images.pokemontcg.io/sm3/112.png"
+			}
+		];
+
+		this.link_logo_pre_loaded = [
+			{
+				imageUrl: "https://assets.pokemon.com//assets/cms2/img/attend-events/championship-slider/regional_championships_logo_en.png"
+			},
+			{
+				imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Pok%C3%A9mon_Trading_Card_Game_logo.svg/2000px-Pok%C3%A9mon_Trading_Card_Game_logo.svg.png"
+			},
+			{
+				imageUrl: "https://assets.pokemon.com//assets/cms2/img/attend-events/attend-events/play_pokemon_logo.png"
+			}
+		];
+
 		this.url = environment.web_link + "/scoreboard/" + this.room;
 		this.socketService.getMesssage("data")
 			.subscribe(data => {
@@ -200,6 +258,14 @@ export class RoomComponent implements OnInit {
 	search(name){
 		console.log(name);
 		this.http.get<any>("https://api.pokemontcg.io/v1/cards?name="+name)
+		.toPromise()
+		.then(apiResult => {
+			this.cards = apiResult.cards;
+		})
+	}
+
+	searchNumber(number){
+		this.http.get<any>("https://api.pokemontcg.io/v1/cards?number="+number)
 		.toPromise()
 		.then(apiResult => {
 			this.cards = apiResult.cards;
