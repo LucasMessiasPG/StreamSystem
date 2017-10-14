@@ -15,6 +15,10 @@ export class RoomComponent implements OnInit {
 	@Input() room: string;
 	@Output() leave = new EventEmitter();
 
+	show_preloaded;
+	logo_show_preloaded;
+	link_card_pre_loaded;
+	link_logo_pre_loaded;
 	data;
 	showPreveiew;
 	card_name;
@@ -49,13 +53,12 @@ export class RoomComponent implements OnInit {
 	};
 	url;
 	link_card;
-	link_card_pre_loaded;
-	link_logo_pre_loaded;
 
 	constructor(
 		private socketService: SocketService,
 		private http: HttpClient
-	){}
+	){
+	}
 
 
 	ngOnInit(){
