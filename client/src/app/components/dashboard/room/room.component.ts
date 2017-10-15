@@ -103,7 +103,7 @@ export class RoomComponent implements OnInit {
 			{
 				"name":"Acerola",
 				"imageUrl":"https://images.pokemontcg.io/sm3/112.png"
-			},,
+			},
 			{
 				"name":"Guzma",
 				"imageUrl":"https://images.pokemontcg.io/sm3/115.png"
