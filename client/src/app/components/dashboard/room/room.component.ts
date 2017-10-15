@@ -103,6 +103,42 @@ export class RoomComponent implements OnInit {
 			{
 				"name":"Acerola",
 				"imageUrl":"https://images.pokemontcg.io/sm3/112.png"
+			},,
+			{
+				"name":"Guzma",
+				"imageUrl":"https://images.pokemontcg.io/sm3/115.png"
+			},
+			{
+				"name":"Tapu Lele-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm2/60.png"
+			},
+			{
+				"name":"Drampa-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm2/115.png"
+			},
+			{
+				"name":"Gardevoir-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/93.png"
+			},
+			{
+				"name":"Sylveon-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm2/92.png"
+			},
+			{
+				"name":"Tapu Bulu-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/130.png"
+			},
+			{
+				"name":"Volcanion-EX",
+				"imageUrl":"https://images.pokemontcg.io/xy11/26.png"
+			},
+			{
+				"name":"Garbodor",
+				"imageUrl":"https://images.pokemontcg.io/sm2/51.png"
+			},
+			{
+				"name":"Garbodor (hab)",
+				"imageUrl":"https://images.pokemontcg.io/xy9/57.png"
 			}
 		];
 
