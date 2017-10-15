@@ -129,8 +129,20 @@ export class RoomComponent implements OnInit {
 				"imageUrl":"https://images.pokemontcg.io/sm3/130.png"
 			},
 			{
+				"name":"Golisopod-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/17.png"
+			},
+			{
+				"name":"Ho-Oh-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/21.png"
+			},
+			{
 				"name":"Volcanion-EX",
 				"imageUrl":"https://images.pokemontcg.io/xy11/26.png"
+			},
+			{
+				"name":"Octillery",
+				"imageUrl":"https://images.pokemontcg.io/xy8/33.png"
 			},
 			{
 				"name":"Garbodor",
@@ -139,6 +151,14 @@ export class RoomComponent implements OnInit {
 			{
 				"name":"Garbodor (hab)",
 				"imageUrl":"https://images.pokemontcg.io/xy9/57.png"
+			},
+			{
+				"name":"Rainbow Energy",
+				"imageUrl":"https://images.pokemontcg.io/xy8/152.png"
+			},
+			{
+				"name":"Double Colorless Energy",
+				"imageUrl":"https://images.pokemontcg.io/xy4/111.png"
 			}
 		];
 
