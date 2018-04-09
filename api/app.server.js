@@ -43,8 +43,12 @@ let
 module.exports = () => {
 	mongoose.Promise = global.Promise;
 
-	return mongoose.connect(env.database[env.environment])
-	    .then(configExpress,function(err){
-	        throw new Error(err);
-	    });
+	// return mongoose.connect(env.database[env.environment])
+	//     .then(configExpress,function(err){
+	//         throw new Error(err);
+	//     });
+
+	return new Promise(function(resolve){
+		return resolve(configExpress());
+	});
 };
