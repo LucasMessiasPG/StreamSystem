@@ -42,6 +42,5 @@ export class DashboardComponent implements OnInit {
 		localStorage.removeItem("room");
 		delete this.room;
 	}
-z
 
 }

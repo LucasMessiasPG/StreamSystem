@@ -63,104 +63,8 @@ export class RoomComponent implements OnInit {
 
 	ngOnInit(){
 
-		this.link_card_pre_loaded = [
-			{
-				imageUrl: "https://images.pokemontcg.io/xy10/105.png",
-				name: "N"
-			},
-			{
-				imageUrl: "https://images.pokemontcg.io/xy9/107.png",
-				name: "Sycamore"
-			},
-			{
-				imageUrl: "https://images.pokemontcg.io/sm3/116.png",
-				name: "Kiawe"
-			},
-			{
-				imageUrl: "https://images.pokemontcg.io/xy8/134.png",
-				name: "Brigette"
-			},
-			{
-				imageUrl: "https://images.pokemontcg.io/xy10/113.png",
-				name: "Ultra Ball"
-			},
-			{
-				imageUrl: "https://images.pokemontcg.io/sm1/122.png",
-				name: "Lillie"
-			},
-			{
-				"name":"Hala",
-				"imageUrl":"https://images.pokemontcg.io/sm2/126.png"
-			},
-			{
-				"name":"Professor Kukui",
-				"imageUrl":"https://images.pokemontcg.io/sm1/128.png"
-			},
-			{
-				"name":"Shauna",
-				"imageUrl":"https://images.pokemontcg.io/xy4/104.png"
-			},
-			{
-				"name":"Acerola",
-				"imageUrl":"https://images.pokemontcg.io/sm3/112.png"
-			},
-			{
-				"name":"Guzma",
-				"imageUrl":"https://images.pokemontcg.io/sm3/115.png"
-			},
-			{
-				"name":"Tapu Lele-GX",
-				"imageUrl":"https://images.pokemontcg.io/sm2/60.png"
-			},
-			{
-				"name":"Drampa-GX",
-				"imageUrl":"https://images.pokemontcg.io/sm2/115.png"
-			},
-			{
-				"name":"Gardevoir-GX",
-				"imageUrl":"https://images.pokemontcg.io/sm3/93.png"
-			},
-			{
-				"name":"Sylveon-GX",
-				"imageUrl":"https://images.pokemontcg.io/sm2/92.png"
-			},
-			{
-				"name":"Tapu Bulu-GX",
-				"imageUrl":"https://images.pokemontcg.io/sm3/130.png"
-			},
-			{
-				"name":"Golisopod-GX",
-				"imageUrl":"https://images.pokemontcg.io/sm3/17.png"
-			},
-			{
-				"name":"Ho-Oh-GX",
-				"imageUrl":"https://images.pokemontcg.io/sm3/21.png"
-			},
-			{
-				"name":"Volcanion-EX",
-				"imageUrl":"https://images.pokemontcg.io/xy11/26.png"
-			},
-			{
-				"name":"Octillery",
-				"imageUrl":"https://images.pokemontcg.io/xy8/33.png"
-			},
-			{
-				"name":"Garbodor",
-				"imageUrl":"https://images.pokemontcg.io/sm2/51.png"
-			},
-			{
-				"name":"Garbodor (hab)",
-				"imageUrl":"https://images.pokemontcg.io/xy9/57.png"
-			},
-			{
-				"name":"Rainbow Energy",
-				"imageUrl":"https://images.pokemontcg.io/xy8/152.png"
-			},
-			{
-				"name":"Double Colorless Energy",
-				"imageUrl":"https://images.pokemontcg.io/xy4/111.png"
-			}
-		];
+		this.link_card_pre_loaded = this.getCards();
+		
 
 		this.link_logo_pre_loaded = [
 			{
@@ -341,6 +245,108 @@ export class RoomComponent implements OnInit {
 		}else{
 			this.socketService.sendMessageImg(this.room, {img: card.imageUrl, cooldown: cooldown});
 		}
+	}
+
+
+	getCards(){
+		return [
+			{
+				"imageUrl": "https://images.pokemontcg.io/xy10/105.png",
+				"name": "N"
+			},
+			{
+				"imageUrl": "https://images.pokemontcg.io/xy9/107.png",
+				"name": "Sycamore"
+			},
+			{
+				"imageUrl": "https://images.pokemontcg.io/sm3/116.png",
+				"name": "Kiawe"
+			},
+			{
+				"imageUrl": "https://images.pokemontcg.io/xy8/134.png",
+				"name": "Brigette"
+			},
+			{
+				"imageUrl": "https://images.pokemontcg.io/xy10/113.png",
+				"name": "Ultra Ball"
+			},
+			{
+				"imageUrl": "https://images.pokemontcg.io/sm1/122.png",
+				"name": "Lillie"
+			},
+			{
+				"name":"Hala",
+				"imageUrl":"https://images.pokemontcg.io/sm2/126.png"
+			},
+			{
+				"name":"Professor Kukui",
+				"imageUrl":"https://images.pokemontcg.io/sm1/128.png"
+			},
+			{
+				"name":"Shauna",
+				"imageUrl":"https://images.pokemontcg.io/xy4/104.png"
+			},
+			{
+				"name":"Acerola",
+				"imageUrl":"https://images.pokemontcg.io/sm3/112.png"
+			},
+			{
+				"name":"Guzma",
+				"imageUrl":"https://images.pokemontcg.io/sm3/115.png"
+			},
+			{
+				"name":"Tapu Lele-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm2/60.png"
+			},
+			{
+				"name":"Drampa-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm2/115.png"
+			},
+			{
+				"name":"Gardevoir-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/93.png"
+			},
+			{
+				"name":"Sylveon-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm2/92.png"
+			},
+			{
+				"name":"Tapu Bulu-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/130.png"
+			},
+			{
+				"name":"Golisopod-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/17.png"
+			},
+			{
+				"name":"Ho-Oh-GX",
+				"imageUrl":"https://images.pokemontcg.io/sm3/21.png"
+			},
+			{
+				"name":"Volcanion-EX",
+				"imageUrl":"https://images.pokemontcg.io/xy11/26.png"
+			},
+			{
+				"name":"Octillery",
+				"imageUrl":"https://images.pokemontcg.io/xy8/33.png"
+			},
+			{
+				"name":"Garbodor",
+				"imageUrl":"https://images.pokemontcg.io/sm2/51.png"
+			},
+			{
+				"name":"Garbodor (hab)",
+				"imageUrl":"https://images.pokemontcg.io/xy9/57.png"
+			},
+			{
+				"name":"Rainbow Energy",
+				"imageUrl":"https://images.pokemontcg.io/xy8/152.png"
+			},
+			{
+				"name":"Double Colorless Energy",
+				"imageUrl":"https://images.pokemontcg.io/xy4/111.png"
+			}
+		]
 	}
 
 }

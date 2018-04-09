@@ -4,7 +4,7 @@
 	<div>
 		<h1>dashboard</h1>
 
-		<div *ngIf="user && !room">
+		<div *ngIf="!room">
 			<p>Hello {{ user.name }}</p>
 	
 			<div class="row">
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 		</div>
-		<div *ngIf="user && room">
+		<div *ngIf="room">
 			<room-ss [room]="room" (leave)="disconect()"></room-ss>
 		</div>
 	</div>
