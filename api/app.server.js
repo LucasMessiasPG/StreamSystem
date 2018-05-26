@@ -22,6 +22,21 @@ let
 	socket = new Socket(io),
 	configExpress = () => {
 
+		app.use(function (req, res, next) {
+			// res.setHeader('Content-Encoding', 'gzip');
+			res.setHeader('Access-Control-Allow-Origin', '*');
+			res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS, DELETE');
+			res.setHeader('Allow', 'GET, POST, PATCH, OPTIONS, DELETE');
+			res.setHeader('Access-Control-Allow-Credentials', 'true');
+	
+			if(config.env !== 'production')
+				res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization, x-access-token');
+			else
+				res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization'); //allows API requests
+	
+			next();
+		});
+
 		// basic config
 		app.use(morgan('tiny'));
 		app.use(bodyParser.urlencoded({ extended: true }));
