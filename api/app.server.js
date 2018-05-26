@@ -27,6 +27,8 @@ let
 			res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS, DELETE');
 			res.setHeader('Allow', 'GET, POST, PATCH, OPTIONS, DELETE');
 			res.setHeader('Access-Control-Allow-Credentials', 'true');
+			res.setHeader('Upgrade', '*');
+			res.setHeader('Connection', 'upgrade');
 			next();
 		});
 
