@@ -106,16 +106,8 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.me = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.userService.me()];
-                    case 1:
-                        _a.user = _b.sent();
-                        return [2 /*return*/];
-                }
+            return __generator(this, function (_a) {
+                return [2 /*return*/];
             });
         });
     };
@@ -499,20 +491,13 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.userService.me()];
-                    case 1:
-                        _a.user = _b.sent();
-                        this.room = localStorage.getItem("room");
-                        if (this.room) {
-                            this.enter(this.room);
-                        }
-                        return [2 /*return*/];
+            return __generator(this, function (_a) {
+                // this.user = await this.userService.me();
+                this.room = localStorage.getItem("room");
+                if (this.room) {
+                    this.enter(this.room);
                 }
+                return [2 /*return*/];
             });
         });
     };
@@ -1583,34 +1568,10 @@ var UserService = (function () {
     };
     UserService.prototype.me = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
             var user;
             return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!!this.getToken()) return [3 /*break*/, 2];
-                        return [4 /*yield*/, __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(undefined).toPromise()];
-                    case 1: return [2 /*return*/, _a.sent()];
-                    case 2:
-                        if (!this.user) return [3 /*break*/, 4];
-                        return [4 /*yield*/, __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(this.user).toPromise()];
-                    case 3:
-                        user = _a.sent();
-                        return [3 /*break*/, 6];
-                    case 4: return [4 /*yield*/, this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].api + "/v1/me")
-                            .toPromise()
-                            .then(function (response) {
-                            _this.user = response.item;
-                            return _this.user;
-                        })
-                            .catch(function (err) {
-                            return undefined;
-                        })];
-                    case 5:
-                        user = _a.sent();
-                        _a.label = 6;
-                    case 6: return [2 /*return*/, user];
-                }
+                user = { name: "", email: "" };
+                return [2 /*return*/, user];
             });
         });
     };

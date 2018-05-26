@@ -45,26 +45,26 @@ export class UserService {
 		return user;
 
 
-		if(!this.getToken()){
-			return await Observable.of(undefined).toPromise();
-		}
+		// if(!this.getToken()){
+		// 	return await Observable.of(undefined).toPromise();
+		// }
 
-		if(this.user){
-			user = await Observable.of(this.user).toPromise();
-		}else{
-			user = await this.http.get<loginResponse>(environment.api+"/v1/me")
-			.toPromise()
-			.then(response => {
-				this.user = response.item;
-				return this.user;
-			})
-			.catch(err => {
-				return undefined;
-			});
+		// if(this.user){
+		// 	user = await Observable.of(this.user).toPromise();
+		// }else{
+		// 	user = await this.http.get<loginResponse>(environment.api+"/v1/me")
+		// 	.toPromise()
+		// 	.then(response => {
+		// 		this.user = response.item;
+		// 		return this.user;
+		// 	})
+		// 	.catch(err => {
+		// 		return undefined;
+		// 	});
 
-		}
+		// }
 
-		return user;
+		// return user;
 
 	}
 
