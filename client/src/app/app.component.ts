@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     }
 
     async me() {
-        // this.user = await this.userService.me();
+        this.user = await this.userService.me();
     }
 
     async onSubmit(login){
