@@ -422,7 +422,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<topbar-ss></topbar-ss>\n<div class=\"container\">\n\t\n\t<div>\n\t\t<h1>dashboard</h1>\n\n\t\t<div *ngIf=\"!room\">\n\t\t\t<p>Hello {{ user.name }}</p>\n\t\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-12\">\n\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t<label for=\"room\">Dashboard code</label>\n\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"_room\" name=\"room\" class=\"form-control\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-12\">\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"enter(_room)\">Enter Dashboard</button>\n\t\t\t\t\t<button class=\"btn btn-success\" (click)=\"create()\" >Create a new dashboard</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div *ngIf=\"room\">\n\t\t\t<room-ss [room]=\"room\" (leave)=\"disconect()\"></room-ss>\n\t\t</div>\n\t</div>\n\n\n</div>\n\n"
+module.exports = "<topbar-ss></topbar-ss>\n<div class=\"container\">\n\t\n\t<div>\n\t\t<h1>dashboard</h1>\n\n\t\t<div *ngIf=\"!room\">\n\t\t\t<!-- <p>Hello {{ user.name }}</p> -->\n\t\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-12\">\n\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t<label for=\"room\">Dashboard code</label>\n\t\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"_room\" name=\"room\" class=\"form-control\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-12\">\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" (click)=\"enter(_room)\">Enter Dashboard</button>\n\t\t\t\t\t<button class=\"btn btn-success\" (click)=\"create()\" >Create a new dashboard</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div *ngIf=\"room\">\n\t\t\t<room-ss [room]=\"room\" (leave)=\"disconect()\"></room-ss>\n\t\t</div>\n\t</div>\n\n\n</div>\n\n"
 
 /***/ }),
 
@@ -491,13 +491,20 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                // this.user = await this.userService.me();
-                this.room = localStorage.getItem("room");
-                if (this.room) {
-                    this.enter(this.room);
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.userService.me()];
+                    case 1:
+                        _a.user = _b.sent();
+                        this.room = localStorage.getItem("room");
+                        if (this.room) {
+                            this.enter(this.room);
+                        }
+                        return [2 /*return*/];
                 }
-                return [2 /*return*/];
             });
         });
     };

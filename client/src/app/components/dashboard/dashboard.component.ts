@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
 
 	async ngOnInit(){
-		// this.user = await this.userService.me();
+		this.user = await this.userService.me();
 		this.room = localStorage.getItem("room");
 		if(this.room){
 			this.enter(this.room);
