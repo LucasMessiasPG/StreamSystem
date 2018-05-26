@@ -40,8 +40,10 @@ export class UserService {
 
 	async me(): Promise<UserInterface> {
 
-		let
-			user;
+		let user: UserInterface = { name: "", email: ""};
+
+		return user;
+
 
 		if(!this.getToken()){
 			return await Observable.of(undefined).toPromise();
