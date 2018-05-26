@@ -14,7 +14,6 @@ process.on('unhandledRejection', (err, p) => {
 	console.log(err);
 });
 
-
 let
 	Routes = require('./routes'),
 	Middleware = require("./middleware"),
