@@ -8,9 +8,9 @@ class Routes{
 	}
 
 	init(){
-		this.make("/v1/me",require("./v1/me"));
-		this.make("/v1/login",require("./v1/login"));
-		this.make("/v1/user",require("./v1/user"));
+		// this.make("/v1/me",require("./v1/me.route"));
+		// this.make("/v1/login",require("./v1/login.route"));
+		// this.make("/v1/user",require("./v1/user.route"));
 		return this.routes;
 	}
 

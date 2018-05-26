@@ -23,9 +23,7 @@ class Routes{
 		return this.router;
 	}
 
-	async post(req, res, next){
-
-		console.log(req.body);
+	post(req, res, next){
 
 		let
 			User = Models.User,
