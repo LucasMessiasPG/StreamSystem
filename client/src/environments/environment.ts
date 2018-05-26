@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  api: "http://scoreboardtcg.kinghost.net/api",
-  domain: "http://scoreboardtcg.kinghost.net/api",
-  web_link: "http://scoreboardtcg.kinghost.net"
+  api: "http://localhost:8081",
+  domain: "http://localhost:8081",
+  web_link: "http://localhost:4200"
 };
