@@ -41,11 +41,7 @@ let
     	// routes
     	app.use(new Routes(express).init());
 
-    	app.get("/socket",function(req, res, next){
-			// socket
-			socket.init();
-			next();
-		});
+    	socket.init();
 
 	    return http;
 	};
