@@ -8,7 +8,7 @@ const
 	mongoose    = require('mongoose'),
 	http        = require('http').Server(app),
 	bodyParser  = require('body-parser'),
-	io          = require('socket.io')(http,{ path: "/api/socket" });
+	io          = require('socket.io')(http,{ path: "/api" });
 
 process.on('unhandledRejection', (err, p) => {
 	console.log(err);
