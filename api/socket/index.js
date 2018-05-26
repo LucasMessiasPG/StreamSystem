@@ -10,6 +10,7 @@ class Socket{
 
 	init(){
 		this.io.on('connection',(socket) => {
+			console.log(socket.handshake.headers);
 
 			this.subscribe(socket);
 			this.unsubscribe(socket);
