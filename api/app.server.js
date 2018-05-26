@@ -8,7 +8,7 @@ const
 	mongoose    = require('mongoose'),
 	http        = require('http').Server(app),
 	bodyParser  = require('body-parser'),
-	io          = require('socket.io')(http,{ path: "/api" });
+	io          = require('socket.io')(http,{ path: "//socket" });
 
 process.on('unhandledRejection', (err, p) => {
 	console.log(err);
@@ -41,7 +41,7 @@ let
     	// routes
     	app.use(new Routes(express).init());
 
-    	app.get("/api",function(req, res, next){
+    	app.get("/socket",function(req, res, next){
 			// socket
 			socket.init();
 			next();
