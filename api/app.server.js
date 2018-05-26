@@ -28,12 +28,6 @@ let
 			res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS, DELETE');
 			res.setHeader('Allow', 'GET, POST, PATCH, OPTIONS, DELETE');
 			res.setHeader('Access-Control-Allow-Credentials', 'true');
-	
-			if(config.env !== 'production')
-				res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization, x-access-token');
-			else
-				res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization'); //allows API requests
-	
 			next();
 		});
 
