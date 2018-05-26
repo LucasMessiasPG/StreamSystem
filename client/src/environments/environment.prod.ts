@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  api: "http://pokecard.com.br/api",
-  domain: "http://pokecard.com.br",
-  web_link: "http://pokecard.com.br"
+  api: "https://scoreboardtcg.kinghost.net/api",
+  domain: "https://scoreboardtcg.kinghost.net",
+  web_link: "https://scoreboardtcg.kinghost.net"
 };
