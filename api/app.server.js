@@ -41,8 +41,11 @@ let
     	// routes
     	app.use(new Routes(express).init());
 
-    	// socket
-    	socket.init();
+    	app.get("/api",function(req, res, next){
+			// socket
+			socket.init();
+			next();
+		});
 
 	    return http;
 	};
