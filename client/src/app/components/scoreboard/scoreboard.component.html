@@ -32,7 +32,7 @@
 		<div class="row" style="margin-top: 5px;">
 			<div class="col" [ngStyle]="{'font-size.px': fontScore}">{{ data.player1.score || 0 }}</div>
 			<!-- <div class="col"><img [ngStyle]="{'width.px': imgSize}" src="/assets/img/logo.png" alt=""></div> -->
-			<div class="col-6" [ngStyle]="{'margin-top.px': 10}">{{ makeTime(cooldown) }}</div>
+			<div class="col-6" [ngStyle]="{'margin-top.px': 10, display: 'flex', 'justify-content': 'center'}">{{ makeTime(cooldown) }}</div>
 			<div class="col" [ngStyle]="{'font-size.px': fontScore}">{{ data.player2.score || 0 }}</div>
 		</div>
 		<div class="row" style="margin-top: 5px;">
