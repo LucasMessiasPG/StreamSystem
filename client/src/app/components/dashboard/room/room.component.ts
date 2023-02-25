@@ -219,19 +219,26 @@ export class RoomComponent implements OnInit {
 	}
 
 	search(name){
-		console.log(name);
-		this.http.get<any>("https://api.pokemontcg.io/v1/cards?name="+name)
+		this.http.get<any>("https://api.pokemontcg.io/v2/cards?q=name:\""+name+"\"")
 		.toPromise()
 		.then(apiResult => {
-			this.cards = apiResult.cards;
+			this.cards = apiResult.data.map(function(card){
+				const newCard = card;
+				newCard.imageUrl = card.images.small
+				return newCard
+			});
 		})
 	}
 
 	searchNumber(number){
-		this.http.get<any>("https://api.pokemontcg.io/v1/cards?number="+number)
+		this.http.get<any>("https://api.pokemontcg.io/v2/cards?number="+number)
 		.toPromise()
 		.then(apiResult => {
-			this.cards = apiResult.cards;
+			this.cards = apiResult.data.map(function(card){
+				const newCard = card;
+				newCard.imageUrl = card.images.small
+				return newCard
+			});
 		})
 	}
 
